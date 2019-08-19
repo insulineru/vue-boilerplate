@@ -3,6 +3,7 @@
 ## Функционал бойлерплейта
 
 - Подключены наиболее используемые пакеты: [Router](https://github.com/vuejs/vue-router), [Vuex](https://github.com/vuejs/vuex), [i18n](https://github.com/kazupon/vue-i18n), [Vuetify](https://github.com/vuetifyjs/vuetify)
+– Подключены препроцессоры: [Pug](https://github.com/pugjs/pug) для разметки, [SCSS](https://github.com/sass/dart-sass) для стилей.
 - Используется компонентный подход
 - Настроена мультиязычность (стандартно русский и английский язык)
 - Создана базовая разметка для приложения с помощью Vuetify
