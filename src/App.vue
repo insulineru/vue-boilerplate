@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-app(:dark='dark' :class='dark ? "grey darken-4" : "grey lighten-4"')
+  v-app(:dark='dark' )
     cookie-law(theme='blood-orange'
     :buttonText='$t("cookieButton")'
     :message='$t("cookieMessage")')
@@ -24,6 +24,11 @@ export default {
   data: () => ({
     //
   }),
+  mounted () {
+    if (this.$store.getters.dark) {
+      this.$vuetify.theme.dark = true
+    }
+  },
   computed: {
     dark() {
       return this.$store.getters.dark;

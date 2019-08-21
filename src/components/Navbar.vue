@@ -1,19 +1,21 @@
 <template lang="pug">
   nav
-    v-toolbar(flat app)
+    v-app-bar(flat app)
       // Title
       v-toolbar-title.text-uppercase.grey--text
         span {{$t('title')}}
       v-spacer
       // Dark mode
-      v-btn(flat icon color='grey' @click='toggleMode')
+      v-btn(text icon color='grey' @click='toggleMode')
         v-icon(small) brightness_2
       // Language picker
       v-menu(offset-y)
-        v-btn(flat icon slot='activator' color='grey') {{currentLocale.icon}}
+        template(v-slot:activator='{ on }')
+          v-btn(text icon v-on='on' color='grey') {{currentLocale.icon}}
         v-list
-          v-list-tile(v-for='locale in locales' @click='changeLanguage(locale.code)' :key="locale.code")
-            v-list-tile-title {{locale.icon}}
+          v-list-item(v-for='locale in locales' @click='changeLanguage(locale.code)' :key="locale.code")
+            v-list-item-content
+              v-list-tile-title {{locale.icon}}
 </template>
 
 <script>
@@ -37,6 +39,7 @@ export default {
   methods: {
     toggleMode() {
       this.$store.dispatch("setDark", !this.$store.getters.dark);
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark; 
     },
     changeLanguage(locale) {
       i18n.locale = locale;
